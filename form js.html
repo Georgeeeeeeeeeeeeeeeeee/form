@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>bloody stress</title>
+</head>
+<style type="text/css">
+	div{
+		display: flex;
+		flex-direction: column;
+		width: 25%;
+		padding: 20px;
+		height: 450px;
+		justify-content: space-around;
+		background-color: black;
+		border: 2px solid green;
+		border-radius: 5px;
+		align-items: center;
+
+		
+
+	}
+	input{
+		width: 80%;
+		border-radius: 5px;
+		outline: none;
+		border:none;
+		padding: 8px 
+	}
+	input:hover{
+		border: inherit;
+	}
+	div button{
+		width:80px;
+		padding: 8px 0;
+		background: green;
+		color: black;
+		border: none;
+		border-radius: 5px
+
+
+	}
+	div button:hover{
+		background: black;
+		color: green;
+		border: 2px solid green
+	}
+	.b{
+		padding: 10px;
+		background: red;
+		color: black;
+		border: none;
+		border-radius: 5px
+
+
+	}
+	.b:hover{
+		background: black;
+		color: red;
+		border: 2px solid red
+	}
+</style>
+<body>
+	<center>
+	<h1>stress</h1>
+	<div>
+		<input id="name" type="text" name="" placeholder="User Name">
+		<input id="email" type="email" name="" placeholder="E-Mail">
+		<input id="age" type="number" name="" placeholder="Age">
+		<input id="password" type="password" name="" placeholder="*****">
+		<button onclick="stress()">Sign Up</button>
+	</div>
+	<br><br>
+	<button onclick="display()" class="b">Display</button><br><br>
+	<h4 id="h" style="font-family:sans-serif"></h4>
+	</center>
+</body>
+<script type="text/javascript">
+	var data = [{'name':'List Of Users'}];
+	
+	
+	function stress() {
+		
+		var name = document.getElementById('name').value;
+		var email = document.getElementById('email').value;
+		var age = document.getElementById('age').value;
+		var password = document.getElementById('password').value;
+
+
+		if (name != '') {
+			if (email != '') {
+				if (age != '') {
+					if (password != '') {
+						let y = ''
+						let datum = {'name':name, 'email':email, 'age':age, 'password':password};
+						for (let i = 0; i < data.length; i++) {
+							if (datum.name == data[i].name){
+								y = 'true';
+								// console.log('yes');
+							}
+							else if (datum.name != data[i].name){
+								y = 'false';
+								// console.log('no')
+							}
+						}
+						if(y=='true'){
+							alert('UserName already exists')
+						}
+						else if (y=='false'){
+							data.push(datum)
+						
+						}
+					}
+					else{
+						alert('password not filled')
+					}
+				}
+				else{
+					alert('age not filled')
+				}
+			}
+			else{
+				alert('email not filled')
+			}
+		}
+		else{
+			alert('name not filled')
+		}
+	}
+
+
+
+
+	function display() {
+			let p = ''
+			for(let j of data){
+			 	document.getElementById('h').innerHTML =  p+=j.name+': '+j.email+'<br>';
+				
+			}
+
+			console.log(data)
+	}
+		
+
+</script>
+
+</html>
